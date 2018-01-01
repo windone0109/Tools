@@ -1,0 +1,20 @@
+{
+    "protocol": "dns",
+    "@timestamp": 1490785738000,
+    "src_ip": "172.16.100.123",
+    "dst_ip": "114.114.114.114",
+    "src_port": 25537,
+    "dst_port": 80,
+    "domain_name": "www.baidu.com",
+    "answer_count": 1,
+    "class_type": 1,
+    "res_code": 0,
+    "auth_count": 1,
+    "response_time": 1490785738001,
+    "data":[
+        {
+            "field": 5,
+            "field_desc": "www.a.shifen.com"
+        }
+    ]
+}
