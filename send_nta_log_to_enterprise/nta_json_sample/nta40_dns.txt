@@ -1,0 +1,22 @@
+{
+    "src_mac": "58:FB:84:52:66:65",
+    "dst_mac": "D4:61:FE:DC:E2:96",
+    "@timestamp": 1504832814527,
+    "@end_timestamp": 1504832814527,
+    "flow_id": 1551071288625822,
+    "pcap_cnt": 1,
+    "protocol": "dns",
+    "version":"4",
+    "src_ip": "172.16.150.184",
+    "src_port": 57613,
+    "dst_ip": "61.139.2.69",
+    "dst_port": 53,
+    "proto": "UDP",
+    "dns": {
+        "type": "query",
+        "id": 53510,
+        "rrname": "image.baidu.com",
+        "rrtype": "A",
+        "tx_id": 0
+    }
+}

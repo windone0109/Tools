@@ -1,0 +1,30 @@
+{
+    "@timestamp":1504832814527,
+    "@end_timestamp":1504832814533,
+    "flow_id": 1977422673027129,
+    "protocol": "flow",
+    "src_ip": "111.13.38.109",
+    "src_port": 80,
+    "dst_ip": "172.16.101.67",
+    "dst_port": 51027,
+    "proto": "TCP",
+    "ndpi_app_proto": "http",
+    "app_proto": "http",
+    "flow": {
+        "pkts_toserver": 3,
+        "pkts_toclient": 0,
+        "bytes_toserver": 321,
+        "bytes_toclient": 0,
+        "start": "2017-11-30T13:32:47.204857+0800",
+        "end": "2017-11-30T13:32:47.241390+0800",
+        "age": 0,
+        "state": "new",
+        "reason": "timeout",
+        "alerted": false
+    },
+    "tcp": {
+        "tcp_flags": "00",
+        "tcp_flags_ts": "00",
+        "tcp_flags_tc": "00"
+    }
+}

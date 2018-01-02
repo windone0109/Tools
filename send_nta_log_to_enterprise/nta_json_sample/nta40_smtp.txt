@@ -1,0 +1,41 @@
+{
+    "src_mac": "00:E0:1C:3C:17:C2",
+    "dst_mac": "00:1F:33:D9:81:60",
+    "@timestamp": 1254722767529,
+    "@end_timestamp": 1254722772200,
+    "flow_id": 136642451935894,
+    "pcap_cnt": 46,
+    "protocol": "smtp",
+    "version": 4,
+    "src_ip": "10.10.1.4",
+    "src_port": 1470,
+    "dst_ip": "74.53.140.153",
+    "dst_port": 25,
+    "proto": "TCP",
+    "tx_id": 0,
+    "smtp": {
+        "helo": "GP",
+        "mail_from": "<gurpartap@patriots.in>",
+        "rcpt_to": [
+            "<raj_deol2002in@yahoo.co.in>"
+        ]
+    },
+    "email": {
+        "status": "PARSE_DONE",
+        "from": "\"Gurpartap Singh\" <gurpartap@patriots.in>",
+        "to": [
+            "<raj_deol2002in@yahoo.co.in>"
+        ],
+        "cc": [
+            "<raj_deol2002in@yahoo.co.in>"
+        ],
+        "bcc": [
+            "<raj_deol2002in@yahoo.co.in>"
+        ],
+        "attachment": [
+            "NEWS.txt"
+        ],
+        "subject":"SMTP",
+        "x_mailer": "Microsoft Office Outlook 12.0"
+    }
+}

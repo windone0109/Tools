@@ -1,0 +1,25 @@
+{
+    "protocol": "http",
+    "@timestamp": 1490851666000,
+    "session_time": 0,
+    "src_ip": "100.64.34.51",
+    "dst_ip": "139.206.198.7",
+    "src_port": 31809,
+    "dst_port": 80,
+    "upstream_bytes": 866,
+    "downstream_bytes": 7656,
+    "@file": [],
+    "request": {
+        "method": "GET",
+        "url": "/css/touch/firework.acfb4ee1.css",
+        "host": "ms0.meituan.net",
+        "referer": "http://i.meituan.com/firework/ranklistentry",
+        "user-agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 9_2_1 like Mac OS X) AppleWebKit)"
+    },
+    "response": {
+        "status": "200",
+        "content-type": "text/css",
+        "content-length": 7200
+    },
+    "session_key": "100.64.34.51-http-139.206.198.7"
+}

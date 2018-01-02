@@ -1,0 +1,40 @@
+{
+    "protocol": "ndpi",
+    "src_mac": "E0:24:7F:B6:33:7E",
+    "dst_mac": "0C:82:68:FF:BB:EB",
+    "ack_syn_flag": 1,
+    "src_ip": "100.64.34.51",
+    "dst_ip": "182.140.245.39",
+    "src_ip_loc": {
+        "Region0": "共享地址",
+        "Region1": "共享地址",
+        "Region2": ""
+    },
+    "dst_ip_loc": {
+        "Region0": "中国",
+        "Region1": "四川",
+        "Region2": "成都",
+        "location": {
+            "lat": 30.659462,
+            "lon": 104.065735
+        }
+    },
+    "src_port": 58625,
+    "dst_port": 443,
+    "ipv4_tos": 0,
+    "trans_proto_name": "TCP",
+    "trans_proto": 6,
+    "pkgs": 44,
+    "bytes": 37531,
+    "app_proto": "SSL",
+    "l3_proto_name": "PPPoEs",
+    "l3_proto": 34916,
+    "cast": "UNICAST",
+    "cast_name": "单播",
+    "stream_type": "down",
+    "stream_type_name": "下行",
+    "src_url": "",
+    "dst_url": "",
+    "@timestamp": 1490851671074,
+    "time_internal": 10
+}

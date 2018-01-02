@@ -1,0 +1,26 @@
+{
+    "src_mac": "AC:74:09:48:3D:71",
+    "dst_mac": "D4:61:FE:DC:E3:80",
+    "@timestamp": 1500543914330,
+    "@end_timestamp": 1499219875110,
+    "flow_id": 920120624425911,
+    "in_iface": "enp3s0f1",
+    "protocol": "alert",
+    "vlan": 188,
+    "src_ip": "172.16.102.27",
+    "src_port": 64033,
+    "dst_ip": "192.30.255.113",
+    "dst_port": 22,
+    "proto": "TCP",
+    "alert": {
+        "action": "allowed",
+        "gid": 1,
+        "signature_id": 2003068,
+        "rev": 7,
+        "signature": "WebShell tential SSH Scan OUTBOUND",
+        "category": "Attempted Information Leak",
+        "severity": "2TCP,UDP,ICMP"
+    },
+    "payload_printable": "",
+    "stream": 0
+}

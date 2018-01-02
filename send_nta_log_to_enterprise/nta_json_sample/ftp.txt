@@ -1,0 +1,74 @@
+{
+  "protocol": "ftp",
+  "@timestamp": 1490695917918,
+  "src_ip": "192.168.1.180",
+  "dst_ip": "192.168.1.179",
+  "src_port": 56769,
+  "dst_port": 21,
+  "data": [
+    {
+      "field": "220",
+      "field_desc": " Microsoft FTP Service"
+    },
+    {
+      "field": "USER",
+      "field_desc": " anonymous"
+    },
+    {
+      "field": "331",
+      "field_desc": " Anonymous access allowed, send identity (e-mail name) as password."
+    },
+    {
+      "field": "PASS",
+      "field_desc": " IEUser@"
+    },
+    {
+      "field": "230",
+      "field_desc": " User logged in."
+    },
+    {
+      "field": "SIZE",
+      "field_desc": " QQ_V5.2.0.dmg"
+    },
+    {
+      "field": "213",
+      "field_desc": " 33242886"
+    },
+    {
+      "field": "RETR",
+      "field_desc": " QQ_V5.2.0.dmg"
+    },
+    {
+      "field": "150",
+      "field_desc": " Opening data channel for file download from server of \"/tools/mac/QQ_V5.2.0.dmg\""
+    },
+    {
+      "field": "226",
+      "field_desc": " Successfully transferred \"/tools/mac/QQ_V5.2.0.dmg\""
+    },
+    {
+      "field": "RETR",
+      "field_desc": " test_ftp.txt"
+    },
+    {
+      "field": "150",
+      "field_desc": " Opening BINARY mode data connection for test_ftp.txt (12 bytes)."
+    },
+    {
+      "field": "226",
+      "field_desc": " Transfer complete."
+    },
+    {
+      "field": "STOR",
+      "field_desc": " test_ftp.txt"
+    },
+    {
+      "field": "150",
+      "field_desc": " Ok to send data."
+    },
+    {
+      "field": "226",
+      "field_desc": " Transfer complete."
+    }
+  ]
+}
