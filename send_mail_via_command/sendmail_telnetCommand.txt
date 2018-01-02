@@ -1,0 +1,16 @@
+telnet 172.16.100.151 25
+
+helo ntatest
+auth login
+bnRhdGVzdDFAbnRhLmNvbQ==
+MTExMTEx235
+mail from:<ntatest1@nta.com>
+rcpt to:<ntatest2@nta.com>
+data
+From:ntatest1@nta.com
+To:ntatest2@nta.com
+Subject:test
+ 
+test
+ 
+.
