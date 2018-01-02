@@ -14,7 +14,7 @@ bufsize = 10240
 
 if len(sys.argv) < 2:
     print "Too few arguments, you should assign the file path.\n"
-    print "You should run like this: python %s --help\n" % sys.argv[0]
+    print "You should run like this: python %s ftp://ftp.nj.hansight.work/build/HansightEnterprise_yunke/mixed__web_f-box-2__backend_f-box-2.0/3.6/7662/HansightEnterprise_yunke_mixed__web_f-box-2__backend_f-box-2.0_3.6.7662.tar.gz\n" % sys.argv[0]
     exit()
 
 path = sys.argv[1]
