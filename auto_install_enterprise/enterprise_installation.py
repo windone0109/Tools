@@ -4,12 +4,18 @@ import ftplib
 import os
 import sys
 import fileinput
+import argparse
 
 ftp_server = '172.16.100.119'
 port = 21
 username = 'dev'
 password = 'devnj'
 bufsize = 10240
+
+if len(sys.argv) < 2:
+    print "Too few arguments, you should assign the file path.\n"
+    print "You should run like this: python %s --help\n" % sys.argv[0]
+    exit()
 
 path = sys.argv[1]
 ftp_path = path.replace('ftp://ftp.nj.hansight.work/','')
@@ -21,6 +27,8 @@ file_name = ftp_path.rsplit('/')[-1]
 
 def uninstallEnterprise():
     if os.path.exists('/opt/hansight/uninstall.sh'):
+        os.system('cd ~ && sed -i "s/alias cp=\'cp -i\'//g" bashrc && cd -')
+        os.system('cp -f /opt/hansight/tomcat/webapps/enterprise/WEB-INF/classes/ ./config/hansight-enterprise.lic')
         os.system('cd /opt/hansight && ./uninstall.sh && cd -')
 
 
@@ -70,17 +78,15 @@ def installEnterprise():
 
 def activate_enterprise():
     os.system('cd ~ && sed -i "s/alias cp=\'cp -i\'//g" bashrc && cd -')
+    os.system('cp -f ./config/hansight-enterprise.lic /opt/hansight/tomcat/webapps/enterprise/WEB-INF/classes/')
     os.system('supervisorctl restart all')
 
 if __name__ == '__main__':
 
-	if len(sys.argv) < 2:
-		print "Too few arguments, you should assign the file path."
-		exit()
-	else:
-		uninstallEnterprise()
-		ftpdownloadfile()
-		installEnterprise()
-		activate_enterprise()
+
+    uninstallEnterprise()
+    ftpdownloadfile()
+    installEnterprise()
+    activate_enterprise()
 
 
