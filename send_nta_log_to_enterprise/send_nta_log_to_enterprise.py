@@ -9,7 +9,7 @@ import re
 
 
 #
-HOST = '172.16.100.79'
+HOST = '127.0.0.1'
 def check_ip_validation():
     while True:
         HOST = raw_input('输入企业版IP地址: ')
@@ -69,7 +69,7 @@ def update_json_log(raw_log_file):
     for i in range(int(LOG_NUMBER)):
         update_json[log_field[0]] = set_timestamp()
         update_json[log_field[1]] = set_internetip()
-        update_json[log_field[2]] = set_intranetip()
+        update_json[log_field[2]] = set_internetip()
         update_json[log_field[3]] = randrange(0, 65536)
         update_json[log_field[4]] = randrange(0, 65536)
         data.append(json.dumps(update_json))
@@ -103,8 +103,12 @@ if __name__ == '__main__':
 
     check_ip_validation()
     check_log_number()
-    print "Start time: " + str(time.time())
+    starttime = time.time()
+    print "Start time: " + str(starttime)
     for log_file in os.listdir(raw_log_path):
         print "Start send %s" % log_file
         send_json(raw_log_path + log_file)
-    print "End time: " + str(time.time())
+    endtime = time.time()
+    print "End time: " + str(endtime)
+    costtime = float(endtime) - float(starttime)
+    print "Cost time: %s" % costtime
