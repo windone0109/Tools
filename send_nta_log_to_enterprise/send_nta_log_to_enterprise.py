@@ -9,19 +9,19 @@ import re
 
 
 #
-HOST = '127.0.0.1'
-def check_ip_validation():
+def set_enterprise_ip():
     while True:
         HOST = raw_input('输入企业版IP地址: ')
         if re.match(r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$', HOST):
+            return HOST
             break
 
-LOG_NUMBER = 1
-def check_log_number():
+def set_log_number():
     while True:
-        LOG_NUMBER = raw_input('发送log数量 : ')
-        if LOG_NUMBER.isdigit():
-            if int(LOG_NUMBER) > 0:
+        a = raw_input('发送log数量 : ')
+        if a.isdigit():
+            if int(a) > 0:
+                return int(a)
                 break
 
 log_field = ['@timestamp', 'src_ip', 'dst_ip', 'src_port', 'dst_port']
@@ -65,50 +65,67 @@ def update_json_log(raw_log_file):
     data = []
 
     update_json = json.loads(parse_json(raw_log_file), 'utf-8')
-    # print json.dumps(update_json)
-    for i in range(int(LOG_NUMBER)):
-        update_json[log_field[0]] = set_timestamp()
-        update_json[log_field[1]] = set_internetip()
-        update_json[log_field[2]] = set_internetip()
-        update_json[log_field[3]] = randrange(0, 65536)
-        update_json[log_field[4]] = randrange(0, 65536)
-        data.append(json.dumps(update_json))
+
+    if update_json.has_key('timestamp'):
+        update_json['timestamp'] = set_timestamp()
+    else:
+        update_json['@timestamp'] = set_timestamp()
+    update_json['src_ip'] = set_internetip()
+    update_json['dst_ip'] = set_internetip()
+    update_json['src_port'] = randrange(0, 65536)
+    update_json['dst_port'] = randrange(0, 65536)
+    data = json.dumps(update_json)
+
     return data
 
 
-def send_json(raw_log_file):
+def send_json(raw_log_file, host, iter_times):
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    try:
-        send_json_log = update_json_log(raw_log_file)
 
+    try:
+        HOST = host
         PORT = 9293
         s.connect((HOST, PORT))
 
         count = 0
         # print send_json_log
 
-        for log in send_json_log:
-            s.sendall(log)
+        for i in range(int(iter_times)):
+
+            send_json_log = update_json_log(raw_log_file)
+            s.sendall(send_json_log)
+
             count = count + 1
             if count % 1000 == 0:
                 time.sleep(1)
-        print "Send '%s' file success." % raw_log_file
+                
+        print "Send '%s' file '%s' times success." % (raw_log_file, count)
     except BaseException as err:
         print "Send '%s' file failed, check it please!" % raw_log_file
     finally:
         s.close()
 
 
-if __name__ == '__main__':
+def start():
 
-    check_ip_validation()
-    check_log_number()
+    host = set_enterprise_ip()
+    iter_times = set_log_number()
+    print iter_times
+
     starttime = time.time()
     print "Start time: " + str(starttime)
+
     for log_file in os.listdir(raw_log_path):
         print "Start send %s" % log_file
-        send_json(raw_log_path + log_file)
+        send_json(raw_log_path + log_file, host, iter_times)
+
     endtime = time.time()
     print "End time: " + str(endtime)
+
     costtime = float(endtime) - float(starttime)
     print "Cost time: %s" % costtime
+
+
+if __name__ == '__main__':
+
+    start()
