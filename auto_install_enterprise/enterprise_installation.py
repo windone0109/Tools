@@ -12,12 +12,12 @@ username = 'dev'
 password = 'devnj'
 bufsize = 10240
 
-if len(sys.argv) < 2:
-    print "Too few arguments, you should assign the file path.\n"
-    print "You should run like this: python %s ftp://ftp.nj.hansight.work/build/HansightEnterprise_yunke/mixed__web_f-box-2__backend_f-box-2.0/3.6/7662/HansightEnterprise_yunke_mixed__web_f-box-2__backend_f-box-2.0_3.6.7662.tar.gz\n" % sys.argv[0]
+if len(sys.argv) < 3:
+    print "\nToo few arguments, you should assign the file path.\n"
+    print "You should run like this: python %s [ enterprise | yunke ] ftp://ftp.nj.hansight.work/build/HansightEnterprise_yunke/mixed__web_f-box-2__backend_f-box-2.0/3.6/7662/HansightEnterprise_yunke_mixed__web_f-box-2__backend_f-box-2.0_3.6.7662.tar.gz\n" % sys.argv[0]
     exit()
 
-path = sys.argv[1]
+path = sys.argv[2]
 ftp_path = path.replace('ftp://ftp.nj.hansight.work/','')
 file_path = ftp_path.rsplit('/',1)[0]
 file_name = ftp_path.rsplit('/')[-1]
@@ -27,7 +27,7 @@ file_name = ftp_path.rsplit('/')[-1]
 
 def uninstallEnterprise():
     if os.path.exists('/opt/hansight/uninstall.sh'):
-        os.system('cd ~ && sed -i "s/alias cp=\'cp -i\'//g" bashrc && cd -')
+        os.system('cd ~ && sed -i "s/alias cp=\'cp -i\'//g" ./.bashrc && cd -')
         os.system('cp -f /opt/hansight/tomcat/webapps/enterprise/WEB-INF/classes/ ./config/hansight-enterprise.lic')
         os.system('cd /opt/hansight && ./uninstall.sh && cd -')
 
@@ -67,17 +67,18 @@ def installEnterprise():
                     line = line.replace('CEP_MEM=16g', 'CEP_MEM=8g')
                 if 'CEP_MEM_NEW=10g\n' == line:
                     line = line.replace('CEP_MEM_NEW=10g', 'CEP_MEM_NEW=5g')
+                if 'enterprise' == str(sys.argv[1]).lower():
+                    if line.startswith('IP='):
+                        line = line.replace('IP=', 'IP=127.0.0.1')
+                    if line.startswith('DATA_DIR='):
+                        line = line.replace('DATA_DIR=', 'DATA_DIR=/data01')
 
                 f_w.write(line)
-                # if 'TOMCAT_MEM_NEW=5g' == line:
-                #     line = line.replace('TOMCAT_MEM_NEW=5g', 'TOMCAT_MEM_NEW=2g')
-                # if 'KAFKA_MEM=4g' == line:
-                #     line = line.replace('KAFKA_MEM=4g', 'KAFKA_MEM=2g')
         os.system('cd HansightEnterprise/script/ && ./install.sh && cd -')
         os.system('systemctl stop firewalld.service')
 
 def activate_enterprise():
-    os.system('cd ~ && sed -i "s/alias cp=\'cp -i\'//g" bashrc && cd -')
+    os.system('cd ~ && sed -i "s/alias cp=\'cp -i\'//g" ./.bashrc && cd -')
     os.system('cp -f ./config/hansight-enterprise.lic /opt/hansight/tomcat/webapps/enterprise/WEB-INF/classes/')
     os.system('supervisorctl restart all')
 
