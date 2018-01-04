@@ -28,7 +28,7 @@ file_name = ftp_path.rsplit('/')[-1]
 def uninstallEnterprise():
     if os.path.exists('/opt/hansight/uninstall.sh'):
         os.system('cd ~ && sed -i "s/alias cp=\'cp -i\'//g" ./.bashrc && cd -')
-        os.system('cp -f /opt/hansight/tomcat/webapps/enterprise/WEB-INF/classes/ ./config/hansight-enterprise.lic')
+        os.system('cp -f /opt/hansight/tomcat/webapps/enterprise/WEB-INF/classes/hansight-enterprise.lic ./config/')
         os.system('cd /opt/hansight && ./uninstall.sh && cd -')
 
 
