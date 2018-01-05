@@ -98,7 +98,7 @@ def send_json(raw_log_file, host, iter_times):
             count = count + 1
             if count % 1000 == 0:
                 time.sleep(1)
-                
+
         print "Send '%s' file '%s' times success." % (raw_log_file, count)
     except BaseException as err:
         print "Send '%s' file failed, check it please!" % raw_log_file
